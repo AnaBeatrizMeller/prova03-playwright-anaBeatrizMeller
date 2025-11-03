@@ -2,52 +2,55 @@ import { Locator, Page } from '@playwright/test';
 import BaseElements from './BaseElements';
 
 export default class  ContatoEmpresaElements extends BaseElements {
-    constructor(readonly page: Page) {
-      super(page);
-      this.page = page;
-    }
+  constructor(readonly page: Page) {
+    super(page);
+    this.page = page;
+  }
 
-    getCampoNome(): Locator {
-        return this.page.locator('input[name="name"]');
-    }
 
-    getCampoEmail(): Locator {
-        return this.page.locator('input[name="email"]');
-    }
+  getCampoNome(): Locator {
+    return this.page.locator('input[name="name"]');
+  }
 
-    getCampoCargo(): Locator {
-        return this.page.locator('input[name="job-title"]');
-    }
+  getCampoEmail(): Locator {
+    return this.page.locator('input[name="email"]');
+  }
 
-    getCampoTelefone(): Locator {
-        return this.page.locator('input[name="personal_phone"]');
-    }
+  getCampoCargo(): Locator {
+    return this.page.locator('input[name="job_title"]');
+  }
 
-    getCampoEmpresa(): Locator {
-        return this.page.locator('input[name="company"]');
-    }
+  getCampoTelefone(): Locator {
+    return this.page.locator('input[name="personal_phone"]');
+  }
 
-    getCampoSegmento(): Locator {
-        return this.page.locator('input[name="cf_segmento"]');
-    }
+  getCampoEmpresa(): Locator {
+    return this.page.locator('input[name="company"]');
+  }
 
-    getBotaoEnviar(): Locator {
-        return this.page.locator('button:has-text("Enviar"), input[type="submit"]:has-text("Enviar")');
-    }
-      
+  getCampoSegmento(): Locator {
+    return this.page.locator('select[name="cf_segmento"]');
+  }
+
+
+  getBotaoEnviar(): Locator {
+  return this.page.locator('button:has-text("Enviar"), input[type="submit"]:has-text("Enviar")');
+}
+
     getMensagemErroEmail(): Locator {
-        return this.page.locator('text=Insira um endereço de email corporativo.');
-    }
-        
-    getMensagemSucesso(): Locator {
-      return this.page.locator('text=Mensagem enviada com sucesso!').nth(0);
-    }
-       
-    getMensagemErroNomeVazio(): Locator {
-      return this.page.locator('input[name="name"]');
+  return this.page.locator('text=Insira um endereço de email corporativo.');
     }
     
-    getMensagemErroTelefoneVazio(): Locator {
-      return this.page.locator('text=Campo obrigatório').last();
-    }
+    getMensagemSucesso(): Locator {
+    return this.page.locator('text=Mensagem enviada com sucesso!').nth(0);
+  }
+    
+  getMensagemErroNomeVazio(): Locator {
+    return this.page.locator('input[name="name"]');
+  }
+    
+  getMensagemErroTelefoneVazio(): Locator {
+    return this.page.locator('text=Campo obrigatório').last();
+  }
+
 }

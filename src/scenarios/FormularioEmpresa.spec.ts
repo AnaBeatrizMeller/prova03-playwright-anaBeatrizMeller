@@ -17,9 +17,25 @@ test.describe('Testes funcionais no site da Narwal Sistemas', () => {
     await page.goto(BASE_URL);
   });
 
-test('Validar rejeição de formulário de contato com email inválido (NEGATIVO)', async () => {
+    test('Validar rejeição de formulário de contato com email inválido (NEGATIVO)', async () => {
     await formularioEmpresaPage.preencherCamposValidos(); 
     await formularioEmpresaPage.enviarFormulario();         
     await formularioEmpresaPage.validarErroEnvio();         
   });
+
+    test('Validar rejeição de formulário com campo Nome vazio', async () => {
+    await formularioEmpresaPage.preencherSemNome();
+    await formularioEmpresaPage.enviarFormulario();         
+    await formularioEmpresaPage.validarRejeicaoNomeVazio(); 
+  });
+  
+    test('Validar obrigatoriedade de campos através do texto (com IA)', async () => {
+      await formularioEmpresaPage.validarCamposObrigatoriosComIA();
+    });
+  
+  test('Validar rejeição de formulário com o campo Telefone vazio', async () => {
+      await formularioEmpresaPage.preencherCamposSemTelefone();
+      await formularioEmpresaPage.enviarFormulario();
+      await formularioEmpresaPage.validarRejeicaoTelefoneVazio();     
+    });
 })
